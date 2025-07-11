@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barışalım mı?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef6f9;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      color: #d6336c;
+      font-size: 2.5rem;
+      min-height: 60px;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.2s ease;
+    }
+    #evet {
+      background-color: #28a745;
+      color: white;
+    }
+    #hayir {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="soru">Ebru, barışalım mı?</h1>
+  <button class="btn" id="evet">Evet</button>
+  <button class="btn" id="hayir">Hayır</button>
+
+  <script>
+    const hayirBtn = document.getElementById("hayir");
+    const soruEl = document.getElementById("soru");
+    let scale = 1;
+    let soruIndex = 0;
+
+    const sorular = [
+      "Emin misin Ebru? 😢",
+      "Gerçekten hayır mı? 😔",
+      "Bak pişman olursun... 😟",
+      "Lütfen... 💔",
+      "Tamam o zaman... 😞"
+    ];
+
+    hayirBtn.addEventListener("click", () => {
+      scale *= 0.7;
+      hayirBtn.style.transform = `scale(${scale})`;
+
+      if (soruIndex < sorular.length) {
+        soruEl.textContent = sorular[soruIndex];
+        soruIndex++;
+      }
+
+      if (scale < 0.15) {
+        hayirBtn.style.display = "none";
+      }
+    });
+
+    document.getElementById("evet").addEventListener("click", () => {
+      alert("Yaa çok sevindim! 💖");
+    });
+  </script>
+</body>
